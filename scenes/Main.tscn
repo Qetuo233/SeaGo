@@ -1,0 +1,235 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/containers.gd" type="Script" id=1]
+[ext_resource path="res://scripts/action_buttons.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=3]
+[ext_resource path="res://scripts/left_panel.gd" type="Script" id=4]
+[ext_resource path="res://assets/grid1.tres" type="TileSet" id=5]
+[ext_resource path="res://actors/yellow_piece.tscn" type="PackedScene" id=7]
+[ext_resource path="res://actors/blue_piece.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/green_piece.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/choice_node.gd" type="Script" id=10]
+[ext_resource path="res://assets/tile_indicator.png" type="Texture" id=11]
+[ext_resource path="res://scenes/turn_based_director.gd" type="Script" id=12]
+[ext_resource path="res://scenes/director.gd" type="Script" id=13]
+[ext_resource path="res://assets/grid_indicator.png" type="Texture" id=14]
+[ext_resource path="res://scripts/skill_button.gd" type="Script" id=15]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.0
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="turn_based_director" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="director" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="stage" type="Node2D" parent="."]
+
+[node name="grid" type="TileMap" parent="stage"]
+position = Vector2( 220, 1 )
+tile_set = ExtResource( 5 )
+cell_size = Vector2( 80, 80 )
+cell_half_offset = 0
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1, 5, 0, -65536, 5, 0, -65535, 5, 0, -65534, 5, 0, -65533, 5, 0, -65532, 5, 0, -65531, 5, 0, -65530, 5, 0, -65529, 5, 0, -65528, 5, 0, -65527, 5, 0, -65526, 5, 0, -65525, 5, 0, -65524, 5, 0, -65523, 5, 0, -65522, 5, 0, 65535, 5, 0, 0, 1, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 6, 2, 0, 7, 2, 0, 8, 6, 0, 9, 6, 0, 10, 6, 0, 11, 6, 0, 12, 6, 0, 13, 1, 0, 14, 5, 0, 131070, 5, 0, 131071, 5, 0, 65536, 0, 0, 65537, 6, 0, 65538, 6, 0, 65539, 6, 0, 65540, 6, 0, 65541, 6, 0, 65542, 2, 0, 65543, 2, 0, 65544, 6, 0, 65545, 6, 0, 65546, 6, 0, 65547, 6, 0, 65548, 6, 0, 65549, 1, 0, 65550, 5, 0, 196607, 5, 0, 131072, 1, 0, 131073, 6, 0, 131074, 6, 0, 131075, 6, 0, 131076, 6, 0, 131077, 6, 0, 131078, 2, 0, 131079, 2, 0, 131080, 6, 0, 131081, 6, 0, 131082, 6, 0, 131083, 6, 0, 131084, 6, 0, 131085, 1, 0, 131086, 5, 0, 262142, 5, 0, 262143, 5, 0, 196608, 0, 0, 196609, 6, 0, 196610, 6, 0, 196611, 6, 0, 196612, 6, 0, 196613, 6, 0, 196614, 2, 0, 196615, 2, 0, 196616, 6, 0, 196617, 6, 0, 196618, 6, 0, 196619, 6, 0, 196620, 6, 0, 196621, 1, 0, 196622, 5, 0, 327679, 5, 0, 262144, 1, 0, 262145, 6, 0, 262146, 6, 0, 262147, 6, 0, 262148, 6, 0, 262149, 6, 0, 262150, 2, 0, 262151, 2, 0, 262152, 6, 0, 262153, 6, 0, 262154, 6, 0, 262155, 6, 0, 262156, 6, 0, 262157, 1, 0, 262158, 5, 0, 393214, 5, 0, 393215, 5, 0, 327680, 0, 0, 327681, 6, 0, 327682, 6, 0, 327683, 6, 0, 327684, 6, 0, 327685, 6, 0, 327686, 2, 0, 327687, 2, 0, 327688, 6, 0, 327689, 6, 0, 327690, 6, 0, 327691, 6, 0, 327692, 6, 0, 327693, 1, 0, 327694, 5, 0, 458751, 5, 0, 393216, 1, 0, 393217, 6, 0, 393218, 6, 0, 393219, 6, 0, 393220, 6, 0, 393221, 6, 0, 393222, 2, 0, 393223, 2, 0, 393224, 6, 0, 393225, 6, 0, 393226, 6, 0, 393227, 6, 0, 393228, 6, 0, 393229, 1, 0, 393230, 5, 0, 524286, 5, 0, 524287, 5, 0, 458752, 6, 0, 458753, 6, 0, 458754, 6, 0, 458755, 6, 0, 458756, 6, 0, 458757, 6, 0, 458758, 2, 0, 458759, 2, 0, 458760, 6, 0, 458761, 6, 0, 458762, 6, 0, 458763, 6, 0, 458764, 6, 0, 458765, 1, 0, 458766, 5, 0, 589823, 5, 0, 524288, 1, 0, 524289, 6, 0, 524290, 6, 0, 524291, 6, 0, 524292, 6, 0, 524293, 6, 0, 524294, 2, 0, 524295, 2, 0, 524296, 6, 0, 524297, 6, 0, 524298, 6, 0, 524299, 6, 0, 524300, 6, 0, 524301, 0, 0, 524302, 5, 0, 655358, 5, 0, 655359, 5, 0, 589824, 5, 0, 589825, 5, 0, 589826, 5, 0, 589827, 5, 0, 589828, 5, 0, 589829, 5, 0, 589830, 5, 0, 589831, 5, 0, 589832, 5, 0, 589833, 5, 0, 589834, 5, 0, 589835, 5, 0, 589836, 5, 0, 589837, 5, 0, 589838, 5, 0, 720895, 5, 0, 655360, 5, 0, 655361, 5, 0, 655362, 5, 0, 655363, 5, 0, 655364, 5, 0, 655365, 5, 0, 655366, 5, 0, 655367, 5, 0, 655368, 5, 0, 655369, 5, 0, 655370, 5, 0, 655371, 5, 0, 655372, 5, 0, 655373, 5, 0, 655374, 5, 0 )
+
+[node name="containers" type="Node2D" parent="stage"]
+position = Vector2( 220, 0 )
+script = ExtResource( 1 )
+
+[node name="select_grid" type="Sprite" parent="stage/containers"]
+position = Vector2( -220, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="extra_select_grid" type="Sprite" parent="stage/containers"]
+position = Vector2( -220, 0 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 14 )
+
+[node name="HUD" type="Node2D" parent="."]
+
+[node name="left_panel" type="Panel" parent="HUD"]
+margin_right = 220.0
+margin_bottom = 768.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="choice_node" type="Node2D" parent="HUD/left_panel"]
+position = Vector2( 39, 251 )
+script = ExtResource( 10 )
+
+[node name="blue_piece" parent="HUD/left_panel/choice_node" instance=ExtResource( 8 )]
+script = null
+
+[node name="Area2D" type="Area2D" parent="HUD/left_panel/choice_node/blue_piece"]
+
+[node name="blue_CollisionShape2D" type="CollisionShape2D" parent="HUD/left_panel/choice_node/blue_piece/Area2D"]
+shape = SubResource( 2 )
+
+[node name="green_piece" parent="HUD/left_panel/choice_node" instance=ExtResource( 9 )]
+position = Vector2( 70, 0 )
+
+[node name="Area2D" type="Area2D" parent="HUD/left_panel/choice_node/green_piece"]
+
+[node name="green_CollisionShape2D" type="CollisionShape2D" parent="HUD/left_panel/choice_node/green_piece/Area2D"]
+shape = SubResource( 1 )
+
+[node name="yellow_piece" parent="HUD/left_panel/choice_node" instance=ExtResource( 7 )]
+position = Vector2( 140, 0 )
+
+[node name="Area2D" type="Area2D" parent="HUD/left_panel/choice_node/yellow_piece"]
+
+[node name="yellow_CollisionShape2D" type="CollisionShape2D" parent="HUD/left_panel/choice_node/yellow_piece/Area2D"]
+shape = SubResource( 1 )
+
+[node name="select_indicator" type="Sprite" parent="HUD/left_panel/choice_node"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="HUD/left_panel/choice_node"]
+margin_left = -26.0
+margin_top = -67.0
+margin_right = 72.0
+margin_bottom = -41.0
+text = "choose"
+
+[node name="player_info1" type="Node2D" parent="HUD/left_panel"]
+
+[node name="name_label" type="Label" parent="HUD/left_panel/player_info1"]
+margin_right = 72.0
+margin_bottom = 14.0
+text = "player: test"
+
+[node name="score_label" type="Label" parent="HUD/left_panel/player_info1"]
+margin_top = 14.0
+margin_right = 63.0
+margin_bottom = 28.0
+text = "score:100"
+
+[node name="have_label" type="Label" parent="HUD/left_panel/player_info1"]
+margin_top = 28.0
+margin_right = 40.0
+margin_bottom = 42.0
+text = "have: 1R 2G 3B"
+
+[node name="energy_label" type="Label" parent="HUD/left_panel/player_info1"]
+margin_left = 72.0
+margin_top = 14.0
+margin_right = 112.0
+margin_bottom = 28.0
+text = "energy: 100"
+
+[node name="player_info2" type="Node2D" parent="HUD/left_panel"]
+position = Vector2( 0, 76 )
+
+[node name="name_label" type="Label" parent="HUD/left_panel/player_info2"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "player: test"
+
+[node name="score_label" type="Label" parent="HUD/left_panel/player_info2"]
+margin_top = 14.0
+margin_right = 63.0
+margin_bottom = 28.0
+text = "score:100"
+
+[node name="have_label" type="Label" parent="HUD/left_panel/player_info2"]
+margin_top = 28.0
+margin_right = 40.0
+margin_bottom = 42.0
+text = "have: 1R 2G 3B"
+
+[node name="energy_label" type="Label" parent="HUD/left_panel/player_info2"]
+margin_left = 72.0
+margin_top = 14.0
+margin_right = 112.0
+margin_bottom = 28.0
+text = "energy: 100"
+
+[node name="round_label" type="Label" parent="HUD/left_panel"]
+margin_left = 13.0
+margin_top = 129.0
+margin_right = 96.0
+margin_bottom = 164.0
+text = "round 151"
+align = 1
+valign = 1
+
+[node name="put_button" type="Button" parent="HUD/left_panel"]
+visible = false
+margin_left = 72.0
+margin_top = 200.0
+margin_right = 157.0
+margin_bottom = 255.0
+text = "put"
+
+[node name="action_buttons" type="Node2D" parent="HUD/left_panel"]
+visible = false
+script = ExtResource( 2 )
+
+[node name="throw_button" type="Button" parent="HUD/left_panel/action_buttons"]
+margin_left = 72.0
+margin_top = 184.0
+margin_right = 157.0
+margin_bottom = 239.0
+text = "throw"
+
+[node name="skill_button1" type="Button" parent="HUD/left_panel/action_buttons"]
+margin_left = 72.0
+margin_top = 265.0
+margin_right = 157.0
+margin_bottom = 320.0
+text = "skill1"
+script = ExtResource( 15 )
+
+[node name="skill_button2" type="Button" parent="HUD/left_panel/action_buttons"]
+margin_left = 72.0
+margin_top = 344.0
+margin_right = 157.0
+margin_bottom = 399.0
+text = "skill2"
+script = ExtResource( 15 )
+
+[node name="end_turn_button" type="Button" parent="HUD/left_panel"]
+margin_left = 119.0
+margin_top = 129.0
+margin_right = 204.0
+margin_bottom = 164.0
+text = "End Turn"
+
+[node name="message_label" type="Label" parent="HUD/left_panel"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -335.0
+margin_right = 220.0
+text = "first select (-1, 1, 9)
+player a, Green, 1/2
+second select (-1, 1, 9)
+player a, Green, 2/2"
+autowrap = true
+
+[connection signal="pre_round_started" from="turn_based_director" to="director" method="start_round"]
+[connection signal="unlock_extra_select_indicator" from="director" to="." method="_on_extra_select_indicator_unlocked"]
+[connection signal="on_piece_put_handled" from="stage/containers" to="." method="on_piece_put_handled"]
+[connection signal="input_event" from="HUD/left_panel/choice_node/blue_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_blue_piece_selected"]
+[connection signal="mouse_entered" from="HUD/left_panel/choice_node/blue_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_blue_piece_pre_selected"]
+[connection signal="input_event" from="HUD/left_panel/choice_node/green_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_green_piece_selected"]
+[connection signal="mouse_entered" from="HUD/left_panel/choice_node/green_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_green_piece_pre_selected"]
+[connection signal="input_event" from="HUD/left_panel/choice_node/yellow_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_yellow_piece_selected"]
+[connection signal="mouse_entered" from="HUD/left_panel/choice_node/yellow_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_yellow_piece_pre_selected"]
+[connection signal="pressed" from="HUD/left_panel/action_buttons/throw_button" to="HUD/left_panel/action_buttons" method="_on_throw_button_pressed"]
+[connection signal="pressed" from="HUD/left_panel/action_buttons/skill_button1" to="HUD/left_panel/action_buttons" method="_on_skill_button1_pressed"]
+[connection signal="pressed" from="HUD/left_panel/action_buttons/skill_button2" to="HUD/left_panel/action_buttons" method="_on_skill_button2_pressed"]
+[connection signal="pressed" from="HUD/left_panel/end_turn_button" to="HUD/left_panel" method="_on_end_turn_button_pressed"]

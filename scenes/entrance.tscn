@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+signal game_start()
+
+func _ready():
+	print(\"scene \" + self.name)
+
+
+func _on_start_button_pressed():
+	Que.player1.pname = $playername_text1.text
+	Que.player2.pname = $playername_text2.text
+	if self.name == \"entrence\":
+		get_tree().change_scene(\"res://scenes/Main.tscn\")
+		emit_signal(\"game_start\")
+"
+
+[node name="entrence" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="background" type="Sprite" parent="."]
+
+[node name="welcome_label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 370.0
+margin_right = 581.0
+margin_bottom = 39.0
+rect_scale = Vector2( 3, 3 )
+text = "please input your name(len < 10)"
+
+[node name="playername_text1" type="TextEdit" parent="."]
+margin_left = 581.0
+margin_top = 95.0
+margin_right = 674.0
+margin_bottom = 125.0
+rect_scale = Vector2( 3, 3 )
+
+[node name="playername_text2" type="TextEdit" parent="."]
+margin_left = 581.0
+margin_top = 228.0
+margin_right = 674.0
+margin_bottom = 258.0
+rect_scale = Vector2( 3, 3 )
+
+[node name="start_button" type="Button" parent="."]
+margin_left = 581.0
+margin_top = 383.0
+margin_right = 707.0
+margin_bottom = 462.0
+text = "Start"
+
+[node name="player_label1" type="Label" parent="."]
+margin_left = 265.0
+margin_top = 117.0
+margin_right = 366.0
+margin_bottom = 131.0
+rect_scale = Vector2( 3, 3 )
+text = "player name:"
+
+[node name="player_label2" type="Label" parent="."]
+margin_left = 265.0
+margin_top = 249.0
+margin_right = 366.0
+margin_bottom = 263.0
+rect_scale = Vector2( 3, 3 )
+text = "player name:"
+
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
