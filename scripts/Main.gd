@@ -154,6 +154,7 @@ func play_in_turn():
 						new_signal = [InputSignals.signals.Empty,[]]
 					$stage/containers.extra_select_grid_status = "no"
 					$stage/containers.lock_select_grid(false)
+					$HUD/left_panel.disable_action_button()
 				else:
 #					print([container_status, $director.belong_to(select_grid_pos), Que.cur_player_index])
 					if container_status and \
