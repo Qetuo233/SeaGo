@@ -32,6 +32,7 @@ func start_round(index):
 	ready_for_round(index)
 
 
+
 func ready_for_round(index):
 	Que.reset_players(index)
 	Infos.refresh_player_info()
@@ -333,16 +334,16 @@ func use_skill(input_data, extra_input = false):
 			match(select_skill_type):
 				0:
 					for pos in get_nearby_pos(select_grid_pos):
-						get_piece_attacked_for_player(against_player, pos, 3)
+						get_piece_attacked_for_player(against_player, pos, 1)
 				1:
 					var movement = input_data[2]
-					shoot_for_player(select_grid_pos, input_data[3] - select_grid_pos, 2, 100)
+					shoot_for_player(select_grid_pos, input_data[3] - select_grid_pos, 1, 100)
 					move_piece_for_player(select_grid_pos, movement)
 					cont.move_piece_in_stage( \
 						type, select_grid_pos, movement)
 				2:
 					var movement = input_data[2]
-					shoot_for_player(select_grid_pos, input_data[3] - select_grid_pos, 2, 100)
+					shoot_for_player(select_grid_pos, input_data[3] - select_grid_pos, 1, 100)
 					move_piece_for_player(select_grid_pos, movement)
 					cont.move_piece_in_stage( \
 						type, select_grid_pos, movement)

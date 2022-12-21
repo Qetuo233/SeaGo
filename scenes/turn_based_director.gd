@@ -37,6 +37,7 @@ func play():
 			
 #			yield(p, "turn_submitted")
 		
+		
 		emit_signal("pre_round_ended", round_index)
 	print("player %d win!" % [winner_index])
 	emit_signal("game_ended")

@@ -41,9 +41,11 @@ func reset_players(round_index):
 	if round_index > 1:
 		player1.energy += 12
 		player2.energy += 12
+		player1.pieces_num[randi() % 3] += 1
+		player2.pieces_num[randi() % 3] += 1
 	else:
-		player1.energy = 811
-		player1.pieces_num = [3, 1, 1]
+		player1.energy = 8
+		player1.pieces_num = [1, 1, 1]
 		player1.score = 0
 		player2.energy = 14
 		player2.pieces_num = [1, 1, 1]

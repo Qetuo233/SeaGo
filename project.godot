@@ -36,6 +36,10 @@ config/name="Seago Demo"
 run/main_scene="res://scenes/base.tscn"
 config/icon="res://icon.png"
 
+[audio]
+
+default_bus_layout=""
+
 [autoload]
 
 Que="*res://scripts/que.gd"
