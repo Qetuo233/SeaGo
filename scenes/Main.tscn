@@ -221,6 +221,7 @@ player a, Green, 2/2"
 autowrap = true
 
 [connection signal="pre_round_started" from="turn_based_director" to="director" method="start_round"]
+[connection signal="player_losed" from="director" to="turn_based_director" method="_on_director_player_losed"]
 [connection signal="unlock_extra_select_indicator" from="director" to="." method="_on_extra_select_indicator_unlocked"]
 [connection signal="on_piece_put_handled" from="stage/containers" to="." method="on_piece_put_handled"]
 [connection signal="input_event" from="HUD/left_panel/choice_node/blue_piece/Area2D" to="HUD/left_panel/choice_node" method="_on_blue_piece_selected"]

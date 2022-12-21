@@ -45,6 +45,7 @@ func move_piece_to_possession(type, pos):
 	new_piece.type = type
 	new_piece.health = Que.piece_health[type]
 	new_piece.movable = true
+	new_piece.attackable = true
 	possession.append(new_piece)
 	pieces_num[type] -= 1
 
@@ -59,22 +60,6 @@ func get_all_health():
 	for piec in possession:
 		ret.append([piec.position, piec.health])
 	return ret
-
-func get_pos_by_distance(pos, dis):
-	pass
-func get_piece_by_distance(pos, dis): 
-	pass
-#	shit
-#	var ret_list = []
-#	for piec in possession:
-#		var cur_pos = piec.position
-#		for e1 in basis_vector:
-#			if Que.is_valid_grid_pos(cur_pos + e1):
-#				if not (cur_pos + e1) in ret_list:
-#					ret_list.append(find_piece_idx_in_possession_by_pos(cur_pos + e1))
-#				for e2 in basis_vector:
-#					if Que.is_valid_grid_pos(cur_pos + e1 + e2):
-#						add_pos_to_vision(cur_pos + e1 + e2)
 
 func find_piece_idx_in_possession_by_pos(pos):
 	for idx in range(len(possession)):
@@ -106,7 +91,7 @@ func move_piece(pos, movement):
 func get_piece_attacked(pos, demage):
 	var idx = find_piece_idx_in_possession_by_pos(pos)
 	if idx != -1:
-		if possession[idx].movable == true:
+		if possession[idx].attackable == true:
 			possession[idx].health -= demage
 	return false
 

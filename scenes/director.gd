@@ -1,10 +1,10 @@
 extends Node
 
 signal unlock_extra_select_indicator
-
 signal move_piece_in_stage(grid_pos, movement)
-
 signal remove_piece_in_stage(grid_pos)
+
+signal player_losed(player_index)
 
 var cur_player
 var against_player
@@ -378,7 +378,16 @@ func shoot_for_player(grid_pos, direction, demage, step_limit=3):
 		steps += 1
 	return false
 
-func end_turn():
-	Que.end_cur_player_turn()
-
-
+func check_bottom_line():
+	var cnt = 0
+	var bottom_x = 13 * (1 - Que.cur_player_index)
+	for y in range(9):
+		var piec_idx = cur_player.find_piece_idx_in_possession_by_pos(Vector2(bottom_x, y))
+		if piec_idx != -1:
+			var piec = cur_player.possession[piec_idx]
+			piec.movable = false
+			piec.attackable = false
+			cnt += 1
+	print(cnt)
+	if cnt == Que.ROW:
+		emit_signal("player_losed", 1 - Que.cur_player_index)

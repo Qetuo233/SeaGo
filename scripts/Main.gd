@@ -161,12 +161,13 @@ func play_in_turn():
 						$director.belong_to(select_grid_pos) == Que.cur_player_index:
 						$HUD/left_panel.enable_action_button()
 						$HUD/left_panel.disable_choice_node()
+						$HUD/left_panel/action_buttons.enable_all_action_button()
 					elif not container_status:
 						$HUD/left_panel.disable_action_button()
 						$HUD/left_panel.enable_choice_node()
 					else:
 						$HUD/left_panel.disable_action_button()
-						$HUD/left_panel.disable_action_button()
+#						$HUD/left_panel.disable_action_button()
 			InputSignals.signals.Select_piece_choice:
 				var select_piece_type = buf[0]
 				if last_signal[0] == InputSignals.signals.Select_grid_pos:
@@ -208,13 +209,13 @@ func play_in_turn():
 						else:
 							new_signal = [InputSignals.signals.Empty,[]]
 				
-		
 		for player in Que.players:
 			for data in player.get_all_health():
 				if data[1] <= 0:
 					$stage/containers.remove_piece_in_stage(data[0])
 				else:
 					$stage/containers.update_health(data[0], data[1])
+		$director.check_bottom_line()
 		last_signal = new_signal
 		new_signal = yield(InputSignals, "input_signal")
 		print("new action")
