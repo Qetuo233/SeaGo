@@ -1,4 +1,4 @@
-# SeaGo
+# ~SeaGo~ 神舟大战
 > rules(dev)
 ## Basic
 
