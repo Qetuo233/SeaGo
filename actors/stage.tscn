@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/arts_from_card_demo/world/map.png" type="Texture" id=1]
 [ext_resource path="res://assets/grid.tres" type="TileSet" id=2]
-[ext_resource path="res://actors/grid.gd" type="Script" id=3]
+[ext_resource path="res://scripts/grid.gd" type="Script" id=3]
 
 [node name="stage" type="Node2D"]
 

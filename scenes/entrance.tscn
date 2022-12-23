@@ -29,7 +29,7 @@ margin_left = 370.0
 margin_right = 581.0
 margin_bottom = 39.0
 rect_scale = Vector2( 3, 3 )
-text = "please input your name(len < 10)"
+text = "input player name"
 
 [node name="playername_text1" type="TextEdit" parent="."]
 margin_left = 581.0
@@ -37,6 +37,7 @@ margin_top = 95.0
 margin_right = 674.0
 margin_bottom = 125.0
 rect_scale = Vector2( 3, 3 )
+text = "Genshin"
 
 [node name="playername_text2" type="TextEdit" parent="."]
 margin_left = 581.0
@@ -44,6 +45,7 @@ margin_top = 228.0
 margin_right = 674.0
 margin_bottom = 258.0
 rect_scale = Vector2( 3, 3 )
+text = "arknights"
 
 [node name="start_button" type="Button" parent="."]
 margin_left = 581.0

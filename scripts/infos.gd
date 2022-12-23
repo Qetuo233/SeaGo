@@ -14,13 +14,11 @@ func refresh_player_info():
 			 + str(index + 1))
 		var cur_player = Que.players[index]
 		player_info.get_node("name_label").text = \
-			"player: %s" %[cur_player.pname]
-		player_info.get_node("score_label").text = \
-			"score: %d" % [cur_player.score]
+			"player:%s" %[cur_player.pname]
 		player_info.get_node("have_label").text = \
-			"have: %dB %dG %dY" % cur_player.pieces_num
+			"%dB %dG %dY" % cur_player.pieces_num
 		player_info.get_node("energy_label").text = \
-			"energy: %d" % [cur_player.energy]
+			"energy:%d" % [cur_player.energy]
 		
 #		print("player %d refreshed" % [index + 1])
 

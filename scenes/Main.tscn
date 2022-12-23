@@ -1,25 +1,53 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
-[ext_resource path="res://scenes/containers.gd" type="Script" id=1]
+[ext_resource path="res://scripts/containers.gd" type="Script" id=1]
 [ext_resource path="res://scripts/action_buttons.gd" type="Script" id=2]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=3]
 [ext_resource path="res://scripts/left_panel.gd" type="Script" id=4]
 [ext_resource path="res://assets/grid1.tres" type="TileSet" id=5]
+[ext_resource path="res://assets/fonts/main_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://actors/yellow_piece.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/blue_piece.tscn" type="PackedScene" id=8]
 [ext_resource path="res://actors/green_piece.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/choice_node.gd" type="Script" id=10]
+[ext_resource path="res://scripts/choice_node.gd" type="Script" id=10]
 [ext_resource path="res://assets/tile_indicator.png" type="Texture" id=11]
-[ext_resource path="res://scenes/turn_based_director.gd" type="Script" id=12]
-[ext_resource path="res://scenes/director.gd" type="Script" id=13]
+[ext_resource path="res://scripts/turn_based_director.gd" type="Script" id=12]
+[ext_resource path="res://scripts/director.gd" type="Script" id=13]
 [ext_resource path="res://assets/grid_indicator.png" type="Texture" id=14]
 [ext_resource path="res://scripts/skill_button.gd" type="Script" id=15]
+[ext_resource path="res://assets/fonts/fusion-pixel.ttf" type="DynamicFontData" id=16]
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 30.0
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 30.0
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 25
+font_data = ExtResource( 16 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 16 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
@@ -67,6 +95,7 @@ __meta__ = {
 }
 
 [node name="choice_node" type="Node2D" parent="HUD/left_panel"]
+visible = false
 position = Vector2( 39, 251 )
 script = ExtResource( 10 )
 
@@ -108,75 +137,65 @@ text = "choose"
 [node name="player_info1" type="Node2D" parent="HUD/left_panel"]
 
 [node name="name_label" type="Label" parent="HUD/left_panel/player_info1"]
-margin_right = 72.0
-margin_bottom = 14.0
+margin_left = 51.0
+margin_top = 1.0
+margin_right = 148.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 3 )
 text = "player: test"
-
-[node name="score_label" type="Label" parent="HUD/left_panel/player_info1"]
-margin_top = 14.0
-margin_right = 63.0
-margin_bottom = 28.0
-text = "score:100"
 
 [node name="have_label" type="Label" parent="HUD/left_panel/player_info1"]
-margin_top = 28.0
-margin_right = 40.0
-margin_bottom = 42.0
-text = "have: 1R 2G 3B"
+margin_left = 119.0
+margin_top = 31.0
+margin_right = 221.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 8 )
+text = "1R 2G 3B"
 
 [node name="energy_label" type="Label" parent="HUD/left_panel/player_info1"]
-margin_left = 72.0
-margin_top = 14.0
-margin_right = 112.0
-margin_bottom = 28.0
-text = "energy: 100"
+margin_top = 31.0
+margin_right = 123.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 9 )
+text = "energy:100"
 
 [node name="player_info2" type="Node2D" parent="HUD/left_panel"]
-position = Vector2( 0, 76 )
+position = Vector2( 0, 69 )
 
 [node name="name_label" type="Label" parent="HUD/left_panel/player_info2"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_left = 51.0
+margin_top = 1.0
+margin_right = 148.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 3 )
 text = "player: test"
 
-[node name="score_label" type="Label" parent="HUD/left_panel/player_info2"]
-margin_top = 14.0
-margin_right = 63.0
-margin_bottom = 28.0
-text = "score:100"
-
 [node name="have_label" type="Label" parent="HUD/left_panel/player_info2"]
-margin_top = 28.0
-margin_right = 40.0
-margin_bottom = 42.0
-text = "have: 1R 2G 3B"
+margin_left = 119.0
+margin_top = 31.0
+margin_right = 221.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 8 )
+text = "1R 2G 3B"
 
 [node name="energy_label" type="Label" parent="HUD/left_panel/player_info2"]
-margin_left = 72.0
-margin_top = 14.0
-margin_right = 112.0
-margin_bottom = 28.0
-text = "energy: 100"
+margin_top = 31.0
+margin_right = 123.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 9 )
+text = "energy:100"
 
 [node name="round_label" type="Label" parent="HUD/left_panel"]
 margin_left = 13.0
 margin_top = 129.0
 margin_right = 96.0
 margin_bottom = 164.0
+custom_fonts/font = SubResource( 4 )
 text = "round 151"
 align = 1
 valign = 1
 
-[node name="put_button" type="Button" parent="HUD/left_panel"]
-visible = false
-margin_left = 72.0
-margin_top = 200.0
-margin_right = 157.0
-margin_bottom = 255.0
-text = "put"
-
 [node name="action_buttons" type="Node2D" parent="HUD/left_panel"]
-visible = false
 script = ExtResource( 2 )
 
 [node name="throw_button" type="Button" parent="HUD/left_panel/action_buttons"]
@@ -184,6 +203,7 @@ margin_left = 72.0
 margin_top = 184.0
 margin_right = 157.0
 margin_bottom = 239.0
+custom_fonts/font = SubResource( 5 )
 text = "throw"
 
 [node name="skill_button1" type="Button" parent="HUD/left_panel/action_buttons"]
@@ -191,6 +211,7 @@ margin_left = 72.0
 margin_top = 265.0
 margin_right = 157.0
 margin_bottom = 320.0
+custom_fonts/font = SubResource( 6 )
 text = "skill1"
 script = ExtResource( 15 )
 
@@ -199,6 +220,7 @@ margin_left = 72.0
 margin_top = 344.0
 margin_right = 157.0
 margin_bottom = 399.0
+custom_fonts/font = ExtResource( 6 )
 text = "skill2"
 script = ExtResource( 15 )
 
@@ -207,6 +229,7 @@ margin_left = 119.0
 margin_top = 129.0
 margin_right = 204.0
 margin_bottom = 164.0
+custom_fonts/font = SubResource( 7 )
 text = "End Turn"
 
 [node name="message_label" type="Label" parent="HUD/left_panel"]
