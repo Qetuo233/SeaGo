@@ -100,7 +100,6 @@ position = Vector2( 39, 251 )
 script = ExtResource( 10 )
 
 [node name="blue_piece" parent="HUD/left_panel/choice_node" instance=ExtResource( 8 )]
-script = null
 
 [node name="Area2D" type="Area2D" parent="HUD/left_panel/choice_node/blue_piece"]
 
